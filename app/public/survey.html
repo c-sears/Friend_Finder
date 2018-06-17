@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
     <link href="https://fonts.googleapis.com/css?family=Rajdhani|Raleway|Maven+Pro" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     
@@ -44,12 +45,34 @@
                 </form>
         </div>
     </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content" id="modal_background">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body text-center">
+                <img class="user_img" src="#" alt="Your Match">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        
+        </div>
+    </div>
     
     
 
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     $(()=>{
 
@@ -64,6 +87,7 @@
                 'You like to go to the movies',
                 'You always listen to music while you\'re driving',
                 'You drink a lot of wine',
+                'You are an early riser'
             ]
 
             const quest_cont = $('.questions').css({display:'block'})
@@ -85,9 +109,9 @@
                 for(let i = 1; i <= 5; i++){
                     const option = $('<option>')
                     if (i === 1){
-                        option.html('1<small> (agree)</small>').val(i)
+                        option.html('1<small>  (dissagree)</small>').val(i)
                     } else if(i === 5){
-                        option.html('5<small> (disagree)</small>').val(i)
+                        option.html('5<small>  (agree)</small>').val(i)
                     } else {
                         option.text(i).val(i)
                     }
@@ -97,9 +121,9 @@
 
                 current_quest+= 1
                 
+                form.append($('<hr>'))
                 form.append(new_quest_label)
                 form.append(new_quest_select)
-                form.append($('<hr>'))
 
             }
 
@@ -139,22 +163,16 @@
 
             $.post('/api/addUser', new_user)
                 .then(data =>{
+                    const modal = $('#myModal')
+                    $('.modal-title').text(data.name)
+                    $('.user_img').attr('src',data.img_url)
+
                     console.log(data)
+                    $('#myModal').modal('show')
                 })
             
         })
 
-
-        $('#add_user').click(()=>{
-            const newUser = {
-                name: 'test',
-                photo: 'www.coolimage.com',
-                personality_results: [5,4,5,3,4,5,3,4,3,5]
-            }
-
-            $.post('/api/addUser', newUser)
-                .then(console.log('success!'))
-        })
-    })
+    }) // end document.ready
 </script>
 </html>

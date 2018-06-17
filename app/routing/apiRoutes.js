@@ -29,10 +29,9 @@ exports.api_routing = (app)=>{
         new_user.results = string_to_int(new_user.results)
         // Add incrementing user id
         new_user.uid = users.length + 1
-        
+        // Send the user their best 'match' as a user object
         res.send(find_match(new_user, users))
-        
-        // Push data to local js file
+        // Push user data to local js file
         users.push(new_user)
 
     })

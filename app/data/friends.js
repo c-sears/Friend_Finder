@@ -21,7 +21,7 @@ exports.find_match = (user_obj, users_arr)=>{
 exports.users = [
     {
         "name": "Caleb",
-        "image": "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "img_url": "https://randomuser.me/api/portraits/women/74.jpg",
         "uid": 1,
         "results": [
             5,

@@ -12,8 +12,11 @@
 /* BEGIN STYLING HOME.HTML */
 /* ====================================================== */
 
-.home_body
+.home_bkg
 {
+    position: fixed;
+    left: 0;
+    right: 0;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -21,38 +24,42 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    filter: blur(2px);
 }
 
-/* .container
+.home_content
 {
-    height: 40%;
-    width: 30%;
-    text-align: center;
-    margin-left: 8%;
-    margin-top: 10%;
-    background-color: #ffffff7c;
-    border: 1px solid #222;
-    box-shadow:
-        3px 3px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-} */
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-top: 5%;
+}
+
+.home_content .jumbotron
+{
+    background: rgba(255, 255, 255, 0.562);
+}
+
+#home_logo
+{
+    font-family: 'Pacifico', cursive;
+    color: rgb(200, 43, 43);
+    text-shadow:
+    -4px 1px 10px rgba(34, 34, 34, 0.25),
+    6px 1px 10px rgba(34, 34, 34, 0.25);
+}
+
+
+#home_text
+{
+    font-family: 'Maven Pro', sans-serif;
+}
 
 .logo
 {
     margin-top: 15px;
     font-family: 'Rajdhani', sans-serif;
     font-size: 2em;
-}
-
-#take_survey
-{
-    height: 100px;
-    width: 50%;
-    margin: 15px auto;
-    font-family: 'Railway', sans-serif;
-    font-size: 2em;
-    color: rgb(90, 148, 224);
-    outline: none;
 }
 
 /* END STYLING HOME.HTML */
@@ -114,11 +121,21 @@
     max-height: 40vh;
     overflow-y: scroll;
     padding: 0;
+    padding-right: 10px;
 }
 
 .questions::-webkit-scrollbar
 {
-    display: none;
+    background: rgba(255, 255, 255, 0.151);
+    border-radius: 20px;
+    box-shadow: 1px 1px 8px rgba(68, 68, 68, 0.5) inset;
+}
+
+.questions::-webkit-scrollbar-thumb
+{
+    border-radius: 20px;
+    background-color: rgba(212, 209, 209, 0.7);
+    box-shadow: 0 3px 10px rgba(63, 63, 63, 0.5);
 }
 
 .form-group label
@@ -131,6 +148,24 @@
 {
     margin-top: 30px;
     margin-bottom: 0;
+}
+
+#modal_background
+{
+    background: url(../images/modal_bkg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.user_img
+{
+    width: 70%;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    box-shadow:
+        10px 14px 19px #111,
+        -10px 14px 19px #111;
 }
 /* END STYLING SURVEY.HTML */
 /* ====================================================== */
