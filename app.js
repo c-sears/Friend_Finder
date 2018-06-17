@@ -18,4 +18,4 @@ api_routing(app)
 html_routing(app)
 
 
-app.listen(PORT, (err)=> console.log(err))
+app.listen(PORT, (err)=> console.log(`Listening on port ${PORT}`))
